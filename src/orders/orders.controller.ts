@@ -18,22 +18,22 @@ export class OrdersController {
     }
   }
 
-  @MessagePattern({cmd:'find_all_orders'})
+  @MessagePattern('find_all_orders')
   findAll(@Payload() orderPaginationDto:OrderPaginationDto) {
     return this.ordersService.findAll(orderPaginationDto);
   }
 
-  @MessagePattern({cmd:'find_one_order'})
+  @MessagePattern('find_one_order')
   async findOne(@Payload('id', ParseUUIDPipe) id: string) {
     return this.ordersService.findOne(id);
   }
 
-  @MessagePattern({cmd:'find_one_order_status'})
+  @MessagePattern('find_one_order_status')
   async findAllByStatus(@Payload('status', ParseUUIDPipe) status: string) {
     return this.ordersService.findOne(status);
   }
 
-  @MessagePattern({cmd:'change_order_status'})
+  @MessagePattern('change_order_status')
   changeOrderStatus(@Payload() changeOrderStatusDto:ChangeOrderStatusDto) {
     return this.ordersService.changeStatus(changeOrderStatusDto)
   }

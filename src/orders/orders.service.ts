@@ -28,7 +28,7 @@ export class OrdersService extends PrismaClient implements OnModuleInit {
       // confirmar los ids de los productos
       const productIds = createOrderDto.items.map(item => item.productId)
       const products: any[] = await firstValueFrom(
-        this.client.send({cmd: 'validate_products'}, productIds)
+        this.client.send('validate_products', productIds)
       )
 
       //calculos de los valores 
@@ -129,7 +129,7 @@ export class OrdersService extends PrismaClient implements OnModuleInit {
     
     const productIds = order.OrderItem.map( orderItem => orderItem.productId);
     const products: any[] = await firstValueFrom(
-      this.client.send({cmd: 'validate_products'}, productIds)
+      this.client.send('validate_products', productIds)
     )
 
 
