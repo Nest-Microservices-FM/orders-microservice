@@ -7,7 +7,7 @@ import { ChangeOrderStatusDto, CreateOrderDto, OrderPaginationDto, PaidOrderDto 
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
-  @MessagePattern({cmd:'create_order'})
+  @MessagePattern('create_order')
   async create(@Payload() createOrderDto: CreateOrderDto) {
 
     const order = await this.ordersService.create(createOrderDto);
