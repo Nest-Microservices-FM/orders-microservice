@@ -25,6 +25,8 @@ model Order {
   totalAmount Float
   totalItems  Int
 
+  userId        String  
+
   status          OrderStatus @default(PENDING)
   paid            Boolean     @default(false)
   paidAt          DateTime?
